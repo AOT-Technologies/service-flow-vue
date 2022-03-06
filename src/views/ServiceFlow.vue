@@ -2,6 +2,7 @@
   <div v-if="jwttoken">
     <Header />
     <CamundaTasklist
+      class="ctf-task-list px-3"
       :bpmApiUrl="configs.BPM_URL"
       :token="jwttoken"
       :formIOApiUrl="configs.FORM_IO_API_URL"
@@ -60,3 +61,18 @@ export default class TaskList extends Vue {
   }
 }
 </script>
+<style scoped>
+.no-content {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+}
+.ctf-task-main-back {
+  background: #ddd;
+  height: 100vh;
+}
+.ctf-task-list {
+  height: 100vh;
+  overflow: auto;
+}
+</style>

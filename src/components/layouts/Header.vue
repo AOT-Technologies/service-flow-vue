@@ -1,30 +1,22 @@
 <template>
-  <b-container fluid class="header">
-    <b-row class="mb-3">
-      <b-col md="4">
-        <b-img
-          src="https://user-images.githubusercontent.com/70306694/124284590-c3078b80-db6a-11eb-81c7-921cfbe46495.png"
-        >
-        </b-img>
-      </b-col>
-      <b-col md="4" class="text-center">
-        <p class="username">User: {{ firstName }} {{ lastName }}</p>
-      </b-col>
-      <b-col md="4" class="d-flex justify-content-end">
-        <b-button
-          class="button-css btn btn-primary"
-          variant="primary"
-          @click="logout"
-          >Logout</b-button
-        >
-      </b-col>
-    </b-row>
-  </b-container>
+  <div class="d-flex align-items-center justify-content-around bg-warning">
+    <div>
+      <img
+        src="https://user-images.githubusercontent.com/70306694/124284590-c3078b80-db6a-11eb-81c7-921cfbe46495.png"
+      />
+    </div>
+    <div class="text-center">
+      <p class="username">User: {{ firstName }} {{ lastName }}</p>
+    </div>
+    <div>
+      <button class="btn btn-primary" @click="logout">Logout</button>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
-
+import "../../style/style.css";
 @Component
 export default class Header extends Vue {
   private firstName = "";
@@ -42,14 +34,6 @@ export default class Header extends Vue {
 </script>
 
 <style scoped>
-.header {
-  background-color: #fdb44e;
-}
-
-.button-css {
-  margin: 10px;
-}
-
 .username {
   font-size: 1.5em;
   color: #fff;
