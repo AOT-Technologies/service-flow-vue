@@ -2,15 +2,12 @@
   <div v-if="jwttoken">
     <Header />
     <CamundaTasklist
+      class="ctf-task-list px-3"
       :bpmApiUrl="configs.BPM_URL"
       :token="jwttoken"
-      :formIOApiUrl="configs.FORM_IO_API_URL"
-      :formIOResourceId="configs.FORM_IO_RESOURCE_ID"
-      :formIOReviewerId="configs.FORM_IO_REVIEWER_ID"
-      :formIOReviewer="configs.FORM_IO_REVIEWER"
+      :formIO="configs.FORMIO_CONFIG"
       :formsflowaiUrl="configs.FORM_FLOW_URL"
       :formsflowaiApiUrl="configs.FORM_FLOW_API_URL"
-      :formIOUserRoles="configs.FORMIO_ROLES"
       :getTaskId="getTaskId"
       taskSortBy="dueDate"
       formIOJwtSecret="--- change me now ---"
@@ -18,6 +15,8 @@
       webSocketEncryptkey="giert989jkwrgb@DR55"
       v-if="isServiceFLowEnabled"
       :container-height="120"
+      :disabledComponents="{form:true}"
+      :hideTaskDetails="{grops:true}"
     />
   </div>
   <div class="no-content" v-else>
@@ -41,14 +40,16 @@ export default class TaskList extends Vue {
   @Prop() private getTaskId!: string;
   public configs = {
     BPM_URL: process.env.VUE_APP_BPM_URL,
-    FORM_IO_API_URL: process.env.VUE_APP_FORM_IO_API_URL,
-    FORM_IO_RESOURCE_ID: process.env.VUE_APP_FORM_IO_RESOURCE_ID,
-    FORM_IO_REVIEWER_ID: process.env.VUE_APP_FORM_IO_REVIEWER_ID,
-    FORM_IO_REVIEWER: process.env.VUE_APP_FORM_IO_REVIEWER,
+    FORMIO_CONFIG: {
+      apiUrl: process.env.VUE_APP_FORM_IO_API_URL,
+      resourceId: process.env.VUE_APP_FORM_IO_RESOURCE_ID,
+      reviewerId: process.env.VUE_APP_FORM_IO_REVIEWER_ID,
+      reviewer: process.env.VUE_APP_FORM_IO_REVIEWER,
+      userRoles:process.env.VUE_APP_FORMIO_ROLES,
+    },
     FORM_FLOW_API_URL: process.env.VUE_APP_FORM_FLOW_API_URL,
     FORM_FLOW_URL: process.env.VUE_APP_FORM_FLOW_URL,
     SERVICEFLOW_ENABLED: true,
-    FORMIO_ROLES: process.env.VUE_APP_FORMIO_ROLES,
   };
 
   public isServiceFLowEnabled: boolean = true;
@@ -60,3 +61,18 @@ export default class TaskList extends Vue {
   }
 }
 </script>
+<style scoped>
+.no-content {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+}
+.ctf-task-main-back {
+  background: #ddd;
+  height: 100vh;
+}
+.ctf-task-list {
+  height: 100vh;
+  overflow: auto;
+}
+</style>
