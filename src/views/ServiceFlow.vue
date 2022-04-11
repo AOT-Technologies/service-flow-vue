@@ -1,6 +1,7 @@
 <template>
   <div v-if="jwttoken">
     <Header />
+    <p>{{jwttoken}}</p>
     <CamundaTasklist
       class="ctf-task-list px-3"
       :bpmApiUrl="configs.BPM_URL"
@@ -58,9 +59,9 @@ export default class TaskList extends Vue {
   created() {
     this.jwttoken = Vue.prototype.$keycloak.token;
     this.isServiceFLowEnabled = true;
-    setInterval(() => {
+    Vue.prototype.refreshToken = setInterval(() => {
       Vue.prototype.$keycloak.updateToken(5).then(() => {
-         this.jwttoken = Vue.prototype.$keycloak.token;
+        this.jwttoken = Vue.prototype.$keycloak.token;
       });
     },60000);
   }

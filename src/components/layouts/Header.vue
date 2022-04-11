@@ -24,6 +24,7 @@ export default class Header extends Vue {
 
   logout() {
     Vue.prototype.$keycloak.logout({ redirectUri: window.location.origin });
+    clearInterval(Vue.prototype.refreshToken);
   }
 
   mounted() {
