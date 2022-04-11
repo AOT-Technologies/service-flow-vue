@@ -1,7 +1,6 @@
 <template>
   <div v-if="jwttoken">
     <Header />
-    <p>{{jwttoken}}</p>
     <CamundaTasklist
       class="ctf-task-list px-3"
       :bpmApiUrl="configs.BPM_URL"
