@@ -19,6 +19,7 @@ import Header from "@/components/layouts/Header.vue";
 @Component({
   components: {
     FormViewSubmission,
+    Header
   },
 })
 export default class FormView extends Vue {
