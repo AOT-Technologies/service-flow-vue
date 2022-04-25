@@ -15,8 +15,8 @@
       webSocketEncryptkey="giert989jkwrgb@DR55"
       v-if="isServiceFLowEnabled"
       :container-height="120"
-      :disabledComponents="{form:true}"
-      :hideTaskDetails="{grops:true}"
+      :disabledComponents="{ form: true }"
+      :hideTaskDetails="{ grops: true }"
     />
   </div>
   <div class="no-content" v-else>
@@ -45,7 +45,7 @@ export default class TaskList extends Vue {
       resourceId: process.env.VUE_APP_FORM_IO_RESOURCE_ID,
       reviewerId: process.env.VUE_APP_FORM_IO_REVIEWER_ID,
       reviewer: process.env.VUE_APP_FORM_IO_REVIEWER,
-      userRoles:process.env.VUE_APP_FORMIO_ROLES,
+      userRoles: process.env.VUE_APP_FORMIO_ROLES,
     },
     FORM_FLOW_API_URL: process.env.VUE_APP_FORM_FLOW_API_URL,
     FORM_FLOW_URL: process.env.VUE_APP_FORM_FLOW_URL,
@@ -58,6 +58,11 @@ export default class TaskList extends Vue {
   created() {
     this.jwttoken = Vue.prototype.$keycloak.token;
     this.isServiceFLowEnabled = true;
+    Vue.prototype.refreshToken = setInterval(() => {
+      Vue.prototype.$keycloak.updateToken(5).then(() => {
+        this.jwttoken = Vue.prototype.$keycloak.token;
+      });
+    },60000);
   }
 }
 </script>
