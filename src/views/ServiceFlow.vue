@@ -1,5 +1,6 @@
 <template>
   <div v-if="jwttoken">
+      
     <Header />
     <CamundaTasklist
       class="ctf-task-list px-3"
@@ -19,6 +20,7 @@
       :disabledComponents="{ form: true }"
       :hideTaskDetails="{ grops: true }"
     />
+    
   </div>
   <div class="no-content" v-else>
     You shouldnot be here !!!
@@ -30,7 +32,7 @@
 import { Component, Prop, Vue } from "vue-property-decorator";
 import CamundaTasklist from "camunda-formio-tasklist-vue/src/components/TaskList.vue";
 import Header from "@/components/layouts/Header.vue";
-
+ 
 @Component({
   components: {
     CamundaTasklist,
@@ -52,6 +54,7 @@ export default class TaskList extends Vue {
   public isServiceFLowEnabled: boolean = true;
   public jwttoken: string | boolean = false;
 
+ 
   created() {
     this.jwttoken = Vue.prototype.$keycloak.token;
     this.isServiceFLowEnabled = true;

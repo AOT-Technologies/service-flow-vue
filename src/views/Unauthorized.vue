@@ -1,29 +1,27 @@
 <template>
-  <b-container fluid>
-    <b-row class="mb-3 header">
-      <b-col md="8">
-        <b-img
+  <div fluid>
+    <div class="mb-3 header">
+      <div class="col-8">
+        <img
           src="https://user-images.githubusercontent.com/70306694/124284590-c3078b80-db6a-11eb-81c7-921cfbe46495.png"
-        >
-        </b-img>
-      </b-col>
-      <b-col md="4" class="d-flex justify-content-end">
-        <b-button
-          class="button-css btn btn-primary"
-          variant="primary"
+        />
+        
+      </div>
+      <div md="4" class="d-flex justify-content-end">
+        <button
+          class="btn btn-primary"
           @click="backClick"
-          >Go Back</b-button
-        >
-      </b-col>
-    </b-row>
-    <b-row class="mb-3">
-      <b-col md="12" class="d-flex justify-content-around">
+          > Go Back</button>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div md="12" class="d-flex justify-content-around">
         <h1>You are unauthorised</h1>
-        <b-img src="https://kurianbenoy.com/assets/img/404-southpark.jpg">
-        </b-img>
-      </b-col>
-    </b-row>
-  </b-container>
+        <img src="https://kurianbenoy.com/assets/img/404-southpark.jpg"/>
+        
+      </div>
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
