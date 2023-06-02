@@ -1,5 +1,6 @@
 <template>
-  <div class="d-flex align-items-center justify-content-around bg-warning">
+  <div
+    class="d-flex flex-wrap align-items-center justify-content-around bg-warning">
     <div>
       <img
         src="https://user-images.githubusercontent.com/70306694/124284590-c3078b80-db6a-11eb-81c7-921cfbe46495.png"
